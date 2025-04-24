@@ -31,6 +31,9 @@ class Simple_Audio_Player {
         // Enqueue only if shortcode is used
         global $post;
         if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'audio_player')) {
+            // Enqueue Dashicons - required for the icons
+            wp_enqueue_style('dashicons');
+            
             wp_enqueue_style(
                 'simple-audio-player-css',
                 plugin_dir_url(__FILE__) . 'css/audio-player.css',
