@@ -3,7 +3,7 @@
  * Plugin Name: WordPress Audio Player
  * Plugin URI: https://golddust.co
  * Description: A simple audio player for WordPress with support for multiple tracks
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Gold Dust
  * Author URI: https://golddust.co
  * Text Domain: wordpress-audio-player
@@ -100,25 +100,31 @@ class Simple_Audio_Player {
                         $track_id = $player_id . '-track-' . $index;
                     ?>
                     <div class="sap-track" data-track-url="<?php echo esc_url(trim($url)); ?>" data-track-id="<?php echo esc_attr($track_id); ?>">
-                        <div class="sap-track-info">
-                            <div class="sap-track-title-container">
-                                <span class="sap-track-icon dashicons <?php echo esc_attr($this->get_track_icon($index)); ?>"></span>
-                                <h3 class="sap-track-title"><?php echo esc_html(trim($title)); ?></h3>
+                        <div class="sap-track-layout">
+                            <div class="sap-track-left">
+                                <div class="sap-controls">
+                                    <button class="sap-play-button" aria-label="Play">
+                                        <span class="dashicons dashicons-controls-play"></span>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="sap-time-display">
-                                <span class="sap-current-time">0:00</span> / 
-                                <span class="sap-duration">0:00</span>
+                            <div class="sap-track-right">
+                                <div class="sap-track-info">
+                                    <div class="sap-track-title-container">
+                                        <span class="sap-track-icon dashicons <?php echo esc_attr($this->get_track_icon($index)); ?>"></span>
+                                        <h3 class="sap-track-title"><?php echo esc_html(trim($title)); ?></h3>
+                                    </div>
+                                    <div class="sap-time-display">
+                                        <span class="sap-current-time">0:00</span> / 
+                                        <span class="sap-duration">0:00</span>
+                                    </div>
+                                </div>
+                                <div class="sap-progress-container">
+                                    <div class="sap-progress-bar">
+                                        <div class="sap-progress"></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="sap-progress-container">
-                            <div class="sap-progress-bar">
-                                <div class="sap-progress"></div>
-                            </div>
-                        </div>
-                        <div class="sap-controls">
-                            <button class="sap-play-button" aria-label="Play">
-                                <span class="dashicons dashicons-controls-play"></span>
-                            </button>
                         </div>
                         <audio id="<?php echo esc_attr($track_id); ?>" preload="metadata">
                             <source src="<?php echo esc_url(trim($url)); ?>" type="audio/mpeg">
